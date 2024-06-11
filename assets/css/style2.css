@@ -1,0 +1,53 @@
+body {
+    background-color: aliceblue;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="submit"],
+select {
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 1em;
+}
+
+input[type="submit"] {
+    background-color: #003366;
+    color: white;
+    cursor: pointer;
+}
+
+#patientDetails {
+    margin-top: 20px;
+}
+
+#patientDetails h2 {
+    margin-bottom: 10px;
+}
+
+#patientDetails p {
+    margin-bottom: 5px;
+}
+
+#patientDetails strong {
+    font-weight: bold;
+}

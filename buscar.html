@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.1.0/vanilla-masker.min.js"></script>
+    <title>Formulário de Busca</title>
+</head>
+
+<body>
+    <h1>Buscar Paciente</h1>
+    <form id="searchForm" action="processar_busca.php" method="post">
+        <div class="form-group">
+            <label for="searchType">Tipo de busca:</label>
+            <select id="searchType">
+                <option value="rg_cns">RG/CNS</option>
+                <option value="nome">Nome Completo</option>
+            </select>
+        </div>
+        <div id="rg_cns_search">
+            <div class="form-group">
+                <label for="rg">R.G/CNS:</label>
+                <input type="text" id="rg" name="rg" maxlength="12" pattern="[0-9]{12}" placeholder="Digite o R.G ou CNS do paciente" required>
+            </div>
+        </div>
+        <div id="nome_search" style="display: none;">
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite o nome completo do paciente">
+            </div>
+        </div>
+        <input type="submit" value="Buscar">
+    </form>
+
+    <div id="patientDetails" style="display: none;">
+        <h2>Detalhes do Paciente</h2>
+        <p><strong>Número da Consulta:</strong> <span id="consultaNumber"></span></p>
+        <p><strong>Médico:</strong> <span id="medico"></span></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var searchForm = document.getElementById('searchForm');
+            var searchType = document.getElementById('searchType');
+            var rgCnsSearch = document.getElementById('rg_cns_search');
+            var nomeSearch = document.getElementById('nome_search');
+            var patientDetails = document.getElementById('patientDetails');
+            var consultaNumber = document.getElementById('consultaNumber');
+            var medico = document.getElementById('medico');
+
+            searchForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                var formData = new FormData(searchForm);
+                var searchValue;
+                if (searchType.value === 'rg_cns') {
+                    searchValue = formData.get('rg');
+                } else {
+                    searchValue = formData.get('nome');
+                }
+                var paciente = {
+                    consultaNumber: "123456",
+                    medico: "Dr. João Silva",
+                };
+                if (paciente) {
+                    consultaNumber.textContent = paciente.consultaNumber;
+                    medico.textContent = paciente.medico;
+                    patientDetails.style.display = 'block';
+                } else {
+                    alert('Paciente não encontrado.');
+                }
+            });
+
+            searchType.addEventListener('change', function () {
+                if (searchType.value === 'rg_cns') {
+                    rgCnsSearch.style.display = 'block';
+                    nomeSearch.style.display = 'none';
+                } else {
+                    rgCnsSearch.style.display = 'none';
+                    nomeSearch.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
