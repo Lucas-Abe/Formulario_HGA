@@ -1,1 +1,1 @@
-# Formulario_HGA
+Bibliografias: https://www.w3schools.com/html/html_forms.asp, https://developer.mozilla.org/pt-BR/docs/Learn/Forms, https://www.youtube.com/watch?v=oO0BSz3hVFU&list=PLGjADNZWxOQIKlxqiPlAD5r1b8GPwn6lB, Curso pacote Full Stack - Danki Code
